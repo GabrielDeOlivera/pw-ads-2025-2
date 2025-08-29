@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .msg{
+            background-color:khaki;
+            border-radius: 4px;
+            color: white;
+            border: 2px solid red;
+            padding: 10px;
+            text-align: center;
+            font-family: Calibri, sans;
+            margin-bottom: 12px;
+
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script> 
+    
+    <div id = 'root' ></div>
+
+    <script type = 'text/babel'>
+
+        //PROPS GENERICAS E PROPS PERSONALIZADAS um funçao de componete React pode receber dois tipos de props:
+
+        // 1) PROPS GENERICaS: sao passadas por meio de um unico objeto e normalmente sao aplicados no componente por meio de espalhamento 
+
+        // 2) PROPS PERSONALIZADAS: sao passadas normalmente a funçao somente as props nomeadas sao pocessadas dentro do componente 
+        
+        // funçao de componente que recebe props genericas
+        // function Mensagem(props) {
+        //     return <div className = 'msg' {...props} />
+        // }
+
+            // a msm funçao de componente acima em formato arrow function 
+
+            const Mensagem = props => <div className = 'msg' {...props} />
+
+        const propsMsg1 = {
+            id: 'msg1',
+            title: 'primeira mensagem',
+            children: 'cuidado com a escada ',
+            propFicticia: 'teste'
+        }
+
+        const container = 
+        <>
+        <Mensagem {...propsMsg1} />
+        </>
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+
+        root.render(container)
+
+    </script>
+    
+</body>
+</html>
