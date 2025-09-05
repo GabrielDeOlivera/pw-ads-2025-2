@@ -39,20 +39,34 @@
         // }
 
             // a msm funçao de componente acima em formato arrow function 
+            // fnçao de componentes que recebe props genericos 
 
             const Mensagem = props => <div className = 'msg' {...props} />
 
-        const propsMsg1 = {
+            // Funçao de componente que recebe apenas props personalizadas 
+            const Aviso = ({id,children}) => <div className = "msg" id ={id} 
+            children={children}/> 
+            
+            const propsMsg1 = {
             id: 'msg1',
             title: 'primeira mensagem',
             children: 'cuidado com a escada ',
             propFicticia: 'teste'
         }
 
-        const container = 
-        <>
-        <Mensagem {...propsMsg1} />
-        </>
+            const container = 
+            <>
+            <Mensagem {...propsMsg1} />
+            {/* No componente mensagem abaixo todas as props serao recebidas e processadas  */}
+            <Mensagem id = "msg" title = "Segunda mensagem" teste = "testando" >
+                Doe Sangue ! Sangue e Vida !
+                </Mensagem>
+
+            {/* Ja no componente Aviso a seguir , apenas as props id e children serao processadas , as demais serao ignoradas */}
+            <Aviso id = "aviso1" title = "Segundo aviso" teste = "testando ">
+                Atravesse sempre na faixa de pedestre 
+                </Aviso>
+            </>
 
         const root = ReactDOM.createRoot(document.getElementById('root'))
 

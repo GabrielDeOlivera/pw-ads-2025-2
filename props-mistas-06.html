@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .soma{
+            border-radius: 50px;
+            border: 3px solid royalblue;
+            padding: 5px;
+            margin: 5px;
+        }
+        .direita{
+            text-align: right;
+            background-color: lightgreen;
+            padding: 8px;
+        }
+        .centro{
+            text-align: center;
+            background-color: tan;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script> 
+    
+    <div id = "root"></div>
+
+    <script type = "text/babel">
+        // um mesmo componente pode combinar props genericos e personalizados no caso a seguir 
+        // quaisquer props passadas alem de num1 e num2 serao recebidas dentro de ...props 
+        const Soma = ({num1,num2,...props}) => 
+            <p class = "soma " {...props}>
+                A soma de {num1} com {num2} e {num1 + num2}
+            </p>
+
+            // Funçao de componente que recebe  as props genericas 
+            const ParagCentro = props => <p className = "centro" {...props} />
+            
+            //Funçao e componente que recebe apenas as props personalizadas 
+            const ParagDireita = ({id,children}) =>
+            <p className = "direita" id={id} children = {children} />
+
+
+            const container = <>
+            {/* apenas props do tipo STRING se passa entre aspas todos os demais tipos deve ser passadas entre chaves { } */}
+            <Soma id = "soma1" num1 = {14} num2 = {57} title = "Soma de 14 com 57" />
+            
+            {/* ParagCentro ira renderizar qualquer prop passado  */}
+            <ParagCentro id = "parag1" title = "centralizado" seila = "numsei">
+                Texto centralizado
+            </ParagCentro>
+
+            {/* ParagDireita ira renderizar apenas as props id e children*/}
+            <ParagDireita id = "parag2" title = "a direita " numsei = "seila">
+                    Texto a direita 
+            </ParagDireita>
+            </>
+
+            // aconteceu de concatenar se eu passa aspas 
+
+
+            const root = ReactDOM.createRoot(document.getElementById('root'))
+
+            root.render(container)
+    </script>
+    
+</body>
+</html>
