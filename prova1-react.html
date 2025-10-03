@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo da area de uma elipse </title>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root" ></div>
+    <script type="text/babel">
+    function Form() {
+        const [raioMaior, setRaiomaior]  = React.useState(0) // Transformando a variavel em variavel de estado para que se possa mudar em tempo real seus valoress na tela 
+        const [raioMenor, setRaiomenor] = React.useState(0)  // assim acontecendo a renderizaçao em tempo real 
+        const area = (raioMaior * raioMenor) * Math.PI
+
+        function handleSubmit(event){
+            alert(`Aki esta sua area:  ${area}`)
+        }
+
+        return <> 
+        {/*ultilizando o return com <> para agrupamento dos componentes */ }
+                <h1> Calculo da Area de uma Elipse</h1>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>
+                            <span>Medida do Raio Maior: </span> <br/> 
+                            <input type="number" 
+                             onChange = {event => setRaiomaior(Number(event.target.value))}
+                             />
+                        </label>
+                    </div>
+                        <div>
+                            <label>
+                                <span>Medida do raio menor: </span><br/>
+                                <input type = "number" 
+                                 onChange = {event => setRaiomenor(Number(event.target.value))}
+                                 /> 
+                            </label>
+                        </div>
+                            <div>{area}</div>
+                            <div>
+                                    <button type="submit">Calcular</button>
+                                    </div>
+                    </form>
+        </>
+
+    }
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+    root.render(<Form/>)
+
+
+    </script>
+    
+</body>
+</html>
