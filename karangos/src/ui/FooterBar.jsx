@@ -21,7 +21,7 @@ export default function FooterBar() {
             }
             }}
             >
-        Desenvolvido e mantido com <CoffeeIcon fontSize='small'/><a href="mailto:Kinai.top@hotmail.com">Gabriel de Oliveira</a>
+        Desenvolvido e mantido com <CoffeeIcon fontSize='small'/><a href="mailto:Kinai.top@hotmail.com">Gabriel de Oliveira Martins</a>
         </Typography>
     </Box>
     </>
